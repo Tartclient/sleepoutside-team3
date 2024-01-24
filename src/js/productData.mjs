@@ -8,8 +8,8 @@ function convertToJson(res) {
 
 export function getData(category = "tents") {
   return fetch(`../json/${category}.json`)
-    .then(convertToJson)
-    .then((data) => data);
+  .then(convertToJson)
+  .then((data) => data);
 }
 
 export async function findProductById(id) {
