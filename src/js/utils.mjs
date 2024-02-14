@@ -30,7 +30,6 @@ export function getParam(param) {
 
 export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = true) 
 {
-  console.log("for the love of ur mom")
   if (clear) {
     parentElement.innerHTML = "";
   }

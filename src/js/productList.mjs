@@ -15,7 +15,6 @@ function productCardTemplate(product) {
 }
 
 export default async function productList(selector, category) {
-  console.log("PRODUCT LIST");
   // get the element we will insert the list into from the selector
   const el = document.querySelector(selector);
   // get the list of products
