@@ -25,22 +25,16 @@ export function setClick(selector, callback) {
 export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get(param); //? is this supposed to be param?
-  return product; //! Maybe change this parameter if needed
+  return urlParams.get(param);
 }
 
-export function renderListWithTemplate(
-  templateFn,
-  parentElement,
-  list,
-  position = "afterbegin",
-  clear = true
-) {
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = true) 
+{
+  console.log("for the love of ur mom")
   if (clear) {
     parentElement.innerHTML = "";
   }
   const htmlString = list.map(templateFn);
-
   parentElement.insertAdjacentHTML(position, htmlString.join(""));
 }
 
