@@ -1,4 +1,6 @@
-const baseURL = import.meta.env.VITE_SERVER_URL
+const baseURL = import.meta.env.VITE_SERVER_URL;
+console.log(baseURL);
+const baseURLTEST = "https://wdd330-backend.onrender.com/"
 
 function convertToJson(res) {
   if (res.ok) {
@@ -9,8 +11,13 @@ function convertToJson(res) {
 }
 
 export async function getData(category) {
-  const response = await fetch(baseURL + `products/search/${category}`);
+  console.log("getData is here 1");
+  const url = baseURL + "products/search/" + category;
+  console.log(`test: ${url}`);
+  const response = await fetch(url);
+  console.log("getData is here 2");
   const data = await convertToJson(response);
+  console.log("getData is here 3");
   return data.Result;
 }
 

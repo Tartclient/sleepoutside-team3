@@ -28,18 +28,13 @@ export function getParam(param) {
   return urlParams.get(param);
 }
 
-export function renderListWithTemplate(
-  templateFn,
-  parentElement,
-  list,
-  position = "afterbegin",
-  clear = true
-) {
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = true) 
+{
+  console.log("for the love of ur mom")
   if (clear) {
     parentElement.innerHTML = "";
   }
   const htmlString = list.map(templateFn);
-
   parentElement.insertAdjacentHTML(position, htmlString.join(""));
 }
 
