@@ -28,10 +28,4 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-export function getCartTotal(){
-  const cartItems = getLocalStorage("so-cart");
-  return cartItems.length;
-}
-
 renderCartContents();
-

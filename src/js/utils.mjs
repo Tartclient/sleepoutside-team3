@@ -26,8 +26,7 @@ export function getParam(param) {
   return urlParams.get(param);
 }
 
-export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = true) 
-{
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = true) {
   if (clear) {
     parentElement.innerHTML = "";
   }
@@ -49,8 +48,8 @@ export async function renderWithTemplate(
   }
   const htmlString = await templateFn(data);
   parentElement.insertAdjacentHTML(position, htmlString);
-  if(callback) {
-      callback(data);
+  if (callback) {
+    callback(data);
   }
 }
 
@@ -58,13 +57,13 @@ function loadTemplate(path) {
   // wait what?  we are returning a new function? 
   // this is called currying and can be very helpful.
   return async function () {
-      const res = await fetch(path);
-      if (res.ok) {
+    const res = await fetch(path);
+    if (res.ok) {
       const html = await res.text();
       return html;
-      }
+    }
   };
-} 
+}
 
 
 export async function loadHeaderFooter() {

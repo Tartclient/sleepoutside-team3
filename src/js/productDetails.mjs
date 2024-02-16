@@ -5,7 +5,6 @@ let product = {};
 
 export default async function productDetails(category, productId) {
   product = await findProductById(category, productId);
-  console.log(`Here: ${product}`);
   renderProductDetails();
 
   document.getElementById("addToCart").addEventListener("click", addToCart);
@@ -24,7 +23,13 @@ function addToCart() {
     cartObjects.push(product)
   }
   setLocalStorage("so-cart", cartObjects);
+  updateCartCounter()
   animateCart();
+}
+
+function updateCartCounter() {
+  let backpackCounter = document.querySelector("#cartTotal");
+  backpackCounter.textContent++;
 }
 
 // Animate background when Item is added to cart
