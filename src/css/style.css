@@ -94,6 +94,10 @@ header {
   color: var(--tertiary-color);
 }
 
+.hide {
+  display: none;
+}
+
 button {
   padding: 0.5em 2em;
   background-color: var(--secondary-color);
@@ -131,7 +135,7 @@ button {
   transform: rotate(360deg);
 }
 
-#cartTotal {
+#cartLength {
   font-size: 0.85rem;
   position: absolute;
   top: 5px;

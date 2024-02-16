@@ -1,6 +1,6 @@
 import { getLocalStorage } from "./utils.mjs";
 
-export function getCartTotal() {
+export function getCartLength() {
   const cartItems = getLocalStorage("so-cart");
   let output = !cartItems.length == 0 ? cartItems.length : 0;
   return output;
@@ -8,8 +8,8 @@ export function getCartTotal() {
 
 export function updateCartCounter() {
   if (document.readyState == "complete") {
-    let backpackCounter = document.querySelector("#cartTotal");
-    let total = getCartTotal();
+    let backpackCounter = document.querySelector("#cartLength");
+    let total = getCartLength();
     backpackCounter.textContent = total;
   }
 }

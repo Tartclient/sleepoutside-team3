@@ -1,5 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, money_round, getLocalStorage } from "./utils.mjs";
 import { updateCartCounter } from "./header.js";
 
 loadHeaderFooter();
@@ -29,6 +28,11 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+function isCartEmpty() {
+  const cartItems = getLocalStorage("so-cart");
+  return cartItems.length == 0;
+}
+
 function totalCart() {
   if (document.readyState == "complete") {
     const cartItems = getLocalStorage("so-cart");
@@ -40,8 +44,23 @@ function totalCart() {
   }
 }
 
+function renderTotal() {
+  const cartTotal = document.querySelector(".cart-total");
+  cartTotal.textContent = `Total: $${money_round(totalCart())}`;
+  showCartFooter();
+}
+
+function showCartFooter() {
+  const cartFooter = document.querySelector("div.cart-footer");
+  if (!isCartEmpty()) {
+    cartFooter.classList.remove("hide");
+  } else {
+    cartFooter.classList.add("hide");
+  }
+}
+
 document.onreadystatechange = () => {
-  totalCart();
+  renderTotal();
   updateCartCounter();
 };
 

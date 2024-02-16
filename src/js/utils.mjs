@@ -65,7 +65,6 @@ function loadTemplate(path) {
   };
 }
 
-
 export async function loadHeaderFooter() {
 
   const headerTemplateFn = loadTemplate("/partials/header.html");
@@ -75,4 +74,9 @@ export async function loadHeaderFooter() {
   const footerEl = document.querySelector("#main-footer");
   renderWithTemplate(headerTemplateFn, headerEl);
   renderWithTemplate(footerTemplateFn, footerEl);
+}
+
+//to round up to two decimal places
+export function money_round(num) {
+  return Math.ceil(num * 100) / 100;
 }

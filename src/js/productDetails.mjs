@@ -23,12 +23,12 @@ function addToCart() {
     cartObjects.push(product)
   }
   setLocalStorage("so-cart", cartObjects);
-  updateCartCounter()
+  updateCartCounter();
   animateCart();
 }
 
 function updateCartCounter() {
-  let backpackCounter = document.querySelector("#cartTotal");
+  let backpackCounter = document.querySelector("#cartLength");
   backpackCounter.textContent++;
 }
 
