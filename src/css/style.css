@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -132,7 +132,7 @@ button {
 }
 
 #cartTotal {
-  font-size: .85rem;
+  font-size: 0.85rem;
   position: absolute;
   top: 5px;
   left: 20px;

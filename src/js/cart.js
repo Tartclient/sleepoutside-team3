@@ -33,17 +33,16 @@ function totalCart() {
   if (document.readyState == "complete") {
     const cartItems = getLocalStorage("so-cart");
     let total = 0;
-    cartItems.forEach(item => {
+    cartItems.forEach((item) => {
       total += item.FinalPrice;
     });
-    console.log(total);
     return total;
   }
-};
+}
 
 document.onreadystatechange = () => {
   totalCart();
   updateCartCounter();
-}
+};
 
 renderCartContents();
