@@ -1,6 +1,8 @@
 import { getLocalStorage } from "./utils.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 
+loadHeaderFooter();
+
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
@@ -26,6 +28,10 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+export function getCartTotal(){
+  const cartItems = getLocalStorage("so-cart");
+  return cartItems.length;
+}
+
 renderCartContents();
 
-loadHeaderFooter();
