@@ -119,7 +119,7 @@ button {
 }
 
 .cart svg {
-  width: 25px;
+  width: 30px;
   transition: transform 1s ease-in-out;
 }
 
@@ -129,6 +129,17 @@ button {
 
 .animate-cart {
   transform: rotate(360deg);
+}
+
+#cartTotal {
+  font-size: .85rem;
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  background-color: #f0a868;
+  padding: 5px;
+  border-radius: 50%;
+  text-align: center;
 }
 
 /* End cart icon styles */
