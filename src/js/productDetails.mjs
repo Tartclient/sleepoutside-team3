@@ -28,10 +28,17 @@ function addToCart() {
 }
 
 // Animate background when Item is added to cart
-function animateCart() {
-  const backpack = document.querySelector(".cart a svg");
-  backpack.classList.Add("animate-cart");
-}
+const delay = (delayInms) => {
+  return new Promise(resolve => setTimeout(resolve, delayInms));
+};
+
+// Async - Await delay to play animate, finish then remove.
+const animateCart = async () => {
+  const backpack = document.querySelector(".cart svg");
+  backpack.classList.add("animate-cart");
+  let delayres = await delay(1000);
+  backpack.classList.remove("animate-cart");
+};
 
 function renderProductDetails() {
   document.querySelector("#productName").innerText = product.Brand.Name;
