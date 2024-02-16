@@ -3,7 +3,6 @@ import { loadHeaderFooter } from "./utils.mjs";
 import { updateCartCounter } from "./header.js";
 
 loadHeaderFooter();
-updateCartCounter();
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -28,6 +27,23 @@ function cartItemTemplate(item) {
 </li>`;
 
   return newItem;
+}
+
+function totalCart() {
+  if (document.readyState == "complete") {
+    const cartItems = getLocalStorage("so-cart");
+    let total = 0;
+    cartItems.forEach(item => {
+      total += item.FinalPrice;
+    });
+    console.log(total);
+    return total;
+  }
+};
+
+document.onreadystatechange = () => {
+  totalCart();
+  updateCartCounter();
 }
 
 renderCartContents();
