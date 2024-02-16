@@ -105,9 +105,14 @@ button {
 
 .cart svg {
   width: 25px;
+  transition: transform 1s linear;
 }
 .cart:hover svg {
   fill: gray;
+}
+
+.animate-cart{
+  transform: rotate(360deg);
 }
 
 /* End cart icon styles */
