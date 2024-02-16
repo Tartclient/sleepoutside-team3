@@ -6,10 +6,12 @@ export function getCartTotal() {
     return output;
 }
 
-document.onreadystatechange = function () {
+export function updateCartCounter() {
     if (document.readyState == "complete") {
         let backpackCounter = document.querySelector("#cartTotal");
         let total = getCartTotal();
         backpackCounter.textContent = total;
     }
 }
+
+document.onreadystatechange = updateCartCounter;
