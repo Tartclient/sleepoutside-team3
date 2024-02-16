@@ -12,11 +12,15 @@ function convertToJson(res) {
 export async function getData(category) {
   const url = baseURL1 + "products/search/" + category;
   const response = await fetch(url);
+  console.log(response);
   const data = await convertToJson(response);
+  console.log(data);
   return data.Result;
 }
 
-export async function findProductById(id) {
-  const products = await getData();
+export async function findProductById(category, id) {
+  const products = await getData(category);
+  console.log(`products: ${products}`);
+  console.log(products);
   return products.find((item) => item.Id === id);
 }
