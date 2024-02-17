@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint *.js src/**/*.js",
     "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,css}\"",
-    "test": "jest"
+    "test": "jest",
+    "dev": "vite --port 4000"
   },
   "author": "Shane Thompson",
   "license": "ISC",
