@@ -2,7 +2,7 @@ import { getLocalStorage } from "./utils.mjs";
 
 export function getCartLength() {
   const cartItems = getLocalStorage("so-cart");
-  let output = !cartItems.length == 0 ? cartItems.length : 0;
+  let output = !cartItems === null ? cartItems.length : 0;
   return output;
 }
 
