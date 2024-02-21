@@ -292,12 +292,12 @@ button {
   background-color: #fefefe;
   padding: 0;
   border: 1px solid #888;
-  width: 70vw;
+  width: 50vw;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation-name: animatetop;
   animation-duration: 0.4s;
   left: 50%;
-  margin-left: -35vw;
+  margin-left: -25vw;
   top: 20%;
 }
 
