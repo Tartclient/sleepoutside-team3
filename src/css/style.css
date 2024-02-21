@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -264,6 +264,65 @@ button {
   grid-row: 2;
   grid-column: 3;
 }
+
+/********** MODA L************/
+/* Modal Header */
+.modal-header {
+  padding: 2px 16px;
+  background-color: #f0a868;
+  color: white;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 2px 16px;
+}
+
+/* Modal Footer */
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #f0a868;
+  color: white;
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  z-index: 999;
+  background-color: #fefefe;
+  padding: 0;
+  border: 1px solid #888;
+  width: 50vw;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  left: 50%;
+  margin-left: -25vw;
+  top: 20%;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/************Form************/
+/* Give Away */
+input {
+  display: block;
+  margin-top: .5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
 
 @media screen and (min-width: 500px) {
   body {
