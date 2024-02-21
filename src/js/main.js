@@ -38,15 +38,16 @@ function createGiveAwayModal() {
         "";
     const main = document.querySelector("main");
     main.append(modalContent);
+    document.querySelector(".close")?.addEventListener("click", function (e) {
+        modalContent.style.display = "none";
+    })
 }
 
 // Get the modal
-var modal = document.querySelector(".modal-content");
+// ;
 
 // Get the <span> element that closes the modal
-var span = document.querySelectorAll(".close")[0];
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-    modal.style.display = "none";
-};
+// span.onclick = ;
+

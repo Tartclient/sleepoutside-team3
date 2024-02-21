@@ -34,25 +34,6 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   parentElement.insertAdjacentHTML(position, htmlString.join(""));
 }
 
-export async function renderWithTemplate(
-  templateFn,
-  parentElement,
-  data,
-  callback,
-  position = "afterbegin",
-  clear = true
-) {
-  // get template using function...no need to loop this time.
-  if (clear) {
-    parentElement.innerHTML = "";
-  }
-  const htmlString = await templateFn(data);
-  parentElement.insertAdjacentHTML(position, htmlString);
-  if (callback) {
-    callback(data);
-  }
-}
-
 function loadTemplate(path) {
   // wait what?  we are returning a new function? 
   // this is called currying and can be very helpful.
@@ -71,9 +52,30 @@ export async function loadHeaderFooter() {
   const footerTemplateFn = loadTemplate("/partials/footer.html");
 
   const headerEl = document.querySelector("#main-header");
+  console.log(headerEl);
   const footerEl = document.querySelector("#main-footer");
+  console.log(footerEl);
   renderWithTemplate(headerTemplateFn, headerEl);
   renderWithTemplate(footerTemplateFn, footerEl);
+}
+
+export async function renderWithTemplate(
+  templateFn,
+  parentElement,
+  data,
+  callback,
+  position = "afterbegin",
+  clear = true
+) {
+  // get template using function...no need to loop this time.
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  const htmlString = await templateFn(data);
+  parentElement.insertAdjacentHTML(position, htmlString);
+  if (callback) {
+    callback(data);
+  }
 }
 
 //to round up to two decimal places
