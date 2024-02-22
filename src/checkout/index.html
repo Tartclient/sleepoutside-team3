@@ -1,135 +1,75 @@
 <!DOCTYPE html>
-
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Outside | Checkout</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="../js/checkout.js" type="module"></script>
+</head>
 
-    <title>Sleep Outside | Checkout</title>
-
-    <link rel="stylesheet" href="/css/style.css" />
-
-    <script src="../js/checkout.js" type="module"></script>
-  </head>
-
-  <body>
-    <header class="divider" id="main-header"></header>
-
-    <main class="divider">
-      <section class="products">
-        <h2>Review & Place your Order</h2>
-      </section>
-      <form
-        id="shipping"
-        name="shipping-form"
-        accept-charset="utf-8"
-        action="http://server-nodejs.cit.byui.edu:3000/checkout"
-        method="post"
-      >
-        <fieldset id="shipping-inputs">
+<body>
+  <header class="divider" id="main-header"></header>
+  <main class="divider checkout">
+    <h2>Review & Place your Order</h2>
+    <section class="checkout-form">
+      <form name="checkout">
+        <fieldset>
           <legend>Shipping</legend>
-          <label for="first-name">First Name</label>
-          <input
-            type="text"
-            name="fname"
-            id="first-name"
-            placeholder="John"
-            required
-          />
-
-          <label for="lname">Last Name</label>
-          <input
-            type="text"
-            name="street"
-            id="last-name"
-            placeholder="Appleseed"
-            required
-          />
-
-          <label for="street">Street</label>
-          <input
-            type="text"
-            name="street"
-            id="street"
-            placeholder="123 Main"
-            required
-          />
-
-          <label for="city">City</label>
-          <input
-            type="text"
-            name="city"
-            id="city"
-            placeholder="Rexburg"
-            required
-          />
-
-          <label for="state">State</label>
-          <input
-            type="text"
-            name="state"
-            id="state"
-            placeholder="ID"
-            required
-          />
-
-          <label for="zip">Zip</label>
-          <input type="text" name="zip" id="zip" placeholder="83440" required />
+          <div class="checkout__name">
+            <label for="fname">First Name</label>
+            <input name="fname" required />
+            <label for="lname">Last Name</label>
+            <input name="lname" required />
+          </div>
+          <div class="checkout__address">
+            <label for="street">Street</label>
+            <input name="street" required />
+            <label for="city">City</label>
+            <input name="city" required />
+            <label for="state">State</label>
+            <input name="state" required />
+            <label for="zip">Zip</label>
+            <input name="zip" id="zip" required />
+          </div>
         </fieldset>
-
-        <fieldset id="payment">
+        <fieldset>
           <legend>Payment</legend>
           <label for="cardNumber">Card number</label>
-          <input
-            type="text"
-            name="cardNumber"
-            id="cardNumber"
-            placeholder="0000000000000000"
-            required
-          />
+          <input name="cardNumber" required />
           <label for="expiration">Expiration</label>
-          <input
-            type="text"
-            name="expiration"
-            id="expiration"
-            placeholder="00/00"
-            required
-          />
-          <label for="securityCode">Security Code</label>
-          <input
-            type="text"
-            name="code"
-            id="securityCode"
-            placeholder="000"
-            required
-          />
+          <input name="expiration" required />
+          <label for="code">Security Code</label>
+          <input name="code" required />
         </fieldset>
-
-        <fieldset id="ordersummary">
+        <fieldset class="checkout-summary">
           <legend>Order Summary</legend>
-          <label for="subTotal"
-            >Item Subtotal(<span id="cartSize"></span>)</label
-          >
-          <span id="subTotal"></span>
-          <br />
-          <label for="shippingEstimate">Shipping Estimate</label
-          ><span id="shippingCost"></span>
-          <br />
-          <label for="tax">Tax</label><span id="taxCost"></span>
-
-          <!-- Maybe Remove Later -->
-          <input type="hidden" name="orderDate" id="orderDate" value="" />
-          <input type="hidden" name="items" id="items" value="" />
-          <input type="hidden" name="orderTotal" id="orderTotal" value="" />
-          <input type="hidden" name="shipping" id="shipping" value="" />
-          <input type="hidden" name="tax" id="tax" value="" />
-          <!-- Maybe Remove Later -->
+          <ul>
+            <li>
+              <label for="cartTotal">Item Subtotal(<span id="num-items"></span>)</label>
+              <p name="cartTotal" id="cartTotal"></p>
+            </li>
+            <li>
+              <label for="shipping">Shipping Estimate</label>
+              <p id="shipping"></p>
+            </li>
+            <li>
+              <label for="tax">Tax</label>
+              <p id="tax"></p>
+            </li>
+            <li>
+              <label for="orderTotal"><b>Order Total</b></label>
+              <p id="orderTotal"></p>
+            </li>
+          </ul>
         </fieldset>
-        <input type="submit" value="Checkout" />
-      </form>
-    </main>
 
-    <footer id="main-footer"></footer>
-  </body>
+        <button id="checkoutSubmit" type="submit">Checkout</button>
+      </form>
+    </section>
+  </main>
+  <footer id="main-footer"></footer>
+</body>
+
 </html>
