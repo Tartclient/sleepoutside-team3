@@ -33,7 +33,7 @@ function isCartEmpty() {
   return cartItems.length == 0;
 }
 
-function totalCart() {
+export function totalCart() {
   if (document.readyState == "complete") {
     const cartItems = getLocalStorage("so-cart");
     let total = 0;

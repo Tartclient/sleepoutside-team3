@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -318,11 +318,10 @@ button {
 /* Give Away */
 input {
   display: block;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   margin-bottom: 1rem;
   width: 100%;
 }
-
 
 @media screen and (min-width: 500px) {
   body {
