@@ -3,14 +3,6 @@ import { updateCartCounter } from "./header.js";
 
 loadHeaderFooter();
 
-// function renderCartContents() {
-//   const cartItems = getLocalStorage("so-cart");
-//   const htmlItems = cartItems.map((item) => {
-//     return cartItemTemplate(item)
-//   });
-//   document.querySelector(".product-list").innerHTML = htmlItems.join("");
-// }
-
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
 
