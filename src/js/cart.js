@@ -3,10 +3,42 @@ import { updateCartCounter } from "./header.js";
 
 loadHeaderFooter();
 
-function renderCartContents() {
+// function renderCartContents() {
+//   const cartItems = getLocalStorage("so-cart");
+//   const htmlItems = cartItems.map((item) => {
+//     return cartItemTemplate(item)
+//   });
+//   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+// }
+
+function renderCartContents(newCart) {
   const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+
+  let itemsToBeRendered = [];
+  const htmlItems = [];
+  for (let i = 0; i < cartItems.length; i++) {
+    if (itemsToBeRendered.includes(cartItems[i].Id)) {
+      console.log("do nothing")
+    } else {
+      itemsToBeRendered.push(cartItems[i].Id);
+      console.log(cartItems[i]);
+      htmlItems.push(cartItemTemplate(cartItems[i]));
+    }
+  }
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  /********* COUNTING CODE **********/
+  const counter = {};
+  let ids = cartItems.map((item) => item.Id)
+  // Count how many of item
+  ids.forEach(ele => {
+    if (counter[ele]) {
+      counter[ele] += 1;
+    } else {
+      counter[ele] = 1;
+    }
+  });
+  console.log(counter);
 }
 
 function cartItemTemplate(item) {
@@ -21,7 +53,7 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__quantity">qty: 1 </p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
 
@@ -58,6 +90,41 @@ function showCartFooter() {
     cartFooter.classList.add("hide");
   }
 }
+
+// function mergeDuplicates() {
+//   const cartItems = getLocalStorage("so-cart");
+//   const counter = {};
+
+//   // Get only the Item IDs
+//   let ids = cartItems.map((item) => item.Id)
+
+//   // Count how many of item
+//   ids.forEach(ele => {
+//     if (counter[ele]) {
+//       counter[ele] += 1;
+//     } else {
+//       counter[ele] = 1;
+//     }
+//   });
+//   console.log("Merge Duplicates:");
+//   console.log(counter);
+
+
+//   // Gets what backpacks should be displayed
+//   let itemsToBeRendered = [];
+//   for (let i = 0; i < cartItems.length; i++) {
+//     if (itemsToBeRendered.includes(cartItems[i].Id)) {
+//       console.log("do nothing")
+//     } else {
+//       itemsToBeRendered.push(cartItems[i].Id);
+//     }
+//   }
+//   console.log(itemsToBeRendered);
+// }
+
+// mergeDuplicates()
+
+
 
 document.onreadystatechange = () => {
   renderTotal();
