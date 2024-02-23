@@ -5,11 +5,31 @@ loadHeaderFooter();
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+
+  /********* COUNTING CODE **********/
+  const counter = {};
+  let ids = cartItems.map((item) => item.Id)
+  // Count how many of item
+  ids.forEach(ele => {
+    if (counter[ele]) {
+      counter[ele] += 1;
+    } else {
+      counter[ele] = 1;
+    }
+  });
+
+  let itemsToBeRendered = [];
+  const htmlItems = [];
+  for (let i = 0; i < cartItems.length; i++) {
+    if (!itemsToBeRendered.includes(cartItems[i].Id)) {
+      itemsToBeRendered.push(cartItems[i].Id);
+      htmlItems.push(cartItemTemplate(cartItems[i], counter[cartItems[i].Id]));
+    }
+  }
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
 
-function cartItemTemplate(item) {
+function cartItemTemplate(item, itemQuantity) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
@@ -21,7 +41,7 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__quantity">qty: ${itemQuantity} </p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
 
