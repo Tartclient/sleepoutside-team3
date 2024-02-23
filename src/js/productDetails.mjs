@@ -46,6 +46,17 @@ const animateCart = async () => {
 };
 
 function renderProductDetails() {
+  let extraImageCarousel = document.querySelector(".extraImageCarousel");
+  let extraImages = getExtraImages();
+  extraImages.forEach(image => {
+    let listItem = document.createElement("li");
+    let imageElement = document.createElement("img");
+    imageElement.src = image.Src;
+    imageElement.alt = image.Alt;
+    listItem.append(imageElement);
+    extraImageCarousel.append(listItem);
+  });
+
   document.querySelector("#productName").innerText = product.Brand.Name;
   document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
   document.querySelector("#productImage").src = product.Images.PrimaryLarge;
@@ -54,5 +65,12 @@ function renderProductDetails() {
   document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
   document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
+}
+
+function getExtraImages() {
+  let extraImages = product.Images.ExtraImages;
+  if (extraImages.length > 0) {
+    return extraImages;
+  }
 }
 
