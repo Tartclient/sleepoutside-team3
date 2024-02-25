@@ -19,10 +19,10 @@ export function updateCartCounter() {
   }
 }
 
-document.onreadystatechange = async () => {
+document.onreadystatechange = () => {
   if (document.readyState == "complete") {
     let backpackCounter = document.querySelector("#cartLength");
-    let total = await getCartLength();
+    let total = getCartLength();
     backpackCounter.textContent = total;
   }
 };
