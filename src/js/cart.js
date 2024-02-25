@@ -8,9 +8,9 @@ function renderCartContents() {
 
   /********* COUNTING CODE **********/
   const counter = {};
-  let ids = cartItems.map((item) => item.Id)
+  let ids = cartItems.map((item) => item.Id);
   // Count how many of item
-  ids.forEach(ele => {
+  ids.forEach((ele) => {
     if (counter[ele]) {
       counter[ele] += 1;
     } else {

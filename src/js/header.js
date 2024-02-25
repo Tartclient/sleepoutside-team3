@@ -5,7 +5,7 @@ export function getCartLength() {
   try {
     const cartItems = getLocalStorage("so-cart");
     output = cartItems.length;
-  } catch (e) {
+  } catch {
     output = 0;
   }
   return output;
