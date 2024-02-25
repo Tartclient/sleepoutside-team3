@@ -1,8 +1,13 @@
 import { getLocalStorage } from "./utils.mjs";
 
 export function getCartLength() {
-  const cartItems = getLocalStorage("so-cart");
-  let output = !cartItems === null ? cartItems.length : 0;
+  let output;
+  try {
+    const cartItems = getLocalStorage("so-cart");
+    output = cartItems.length;
+  } catch (e) {
+    output = 0;
+  }
   return output;
 }
 
@@ -14,4 +19,10 @@ export function updateCartCounter() {
   }
 }
 
-document.onreadystatechange = updateCartCounter;
+document.onreadystatechange = async () => {
+  if (document.readyState == "complete") {
+    let backpackCounter = document.querySelector("#cartLength");
+    let total = await getCartLength();
+    backpackCounter.textContent = total;
+  }
+};
