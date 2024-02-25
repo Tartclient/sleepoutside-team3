@@ -26,3 +26,5 @@ document.onreadystatechange = () => {
     backpackCounter.textContent = total;
   }
 };
+
+
