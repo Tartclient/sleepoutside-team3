@@ -52,9 +52,7 @@ export async function loadHeaderFooter() {
   const footerTemplateFn = loadTemplate("/partials/footer.html");
 
   const headerEl = document.querySelector("#main-header");
-  console.log(headerEl);
   const footerEl = document.querySelector("#main-footer");
-  console.log(footerEl);
   renderWithTemplate(headerTemplateFn, headerEl);
   renderWithTemplate(footerTemplateFn, footerEl);
 }
