@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -111,6 +111,24 @@ button {
 
 .divider {
   border-bottom: 2px solid var(--primary-color);
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  background-color: #e49595;
+  border: 3px solid #441211;
+  justify-content: space-between;
+  padding: 0 1rem 0 1rem;
+  margin-top: .25rem;
+}
+
+.alert p {
+  margin: .25rem;
+}
+
+.alert span {
+  /* float: right; */
 }
 
 /* End utility classes */
