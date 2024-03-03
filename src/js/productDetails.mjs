@@ -1,3 +1,4 @@
+import { doc } from "prettier";
 import { findProductById } from "./externalServices.mjs";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 
@@ -70,6 +71,42 @@ function renderProductDetails() {
 function getExtraImages() {
   let extraImages = product.Images.ExtraImages;
   if (extraImages.length > 0) {
+    let carouselCtn = document.querySelector(".carousel");
+    let prevBtn = document.createElement("button");
+    let nextBtn = document.createElement("button");
+    prevBtn.className = "carousel-btn prev";
+    nextBtn.className = "carousel-btn next";
+    prevBtn.textContent = "⬅️";
+    nextBtn.textContent = "➡️";
+    carouselCtn.prepend(nextBtn);
+    carouselCtn.prepend(prevBtn);
+
+
+    //carousel js
+    const prevAtt = prevBtn.createAttribute("data-carousel-button");
+    prevAtt.value = "prev";
+
+    const nextAtt = nextBtn.createAttribute("data-carousel-button");
+    nextAtt.value = "next";
+
+
+    const buttons = document.querySelector("[data-carousel-button]")
+    
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        const offset = button.dataset.carouselButton === "next" ? 1 : -1;
+        const slides = buttons.closest("[data-carousel]").querySelector("[data-slides]")
+
+        const activeSlide = slides.querySelector("[data-active]")
+        let newIndex = [...slides.children].indexOf(activeSlide) + offset
+        if (newIndex < 0) newIndex = slides.children.length - 1
+        if (newIndex >= slides.children.length) newIndex = 0
+
+        slides.children[newIndex].dataset.active = true
+        delete activeSlide.dataset.active
+      })
+    });
+
     return extraImages;
   }
 }
