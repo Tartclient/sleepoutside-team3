@@ -79,6 +79,7 @@ export async function renderWithTemplate(
 //to round up to two decimal places
 export function money_round(num) {
   return Math.ceil(num * 100) / 100;
+<<<<<<< HEAD
 }
 
 export function alertMessage(message, scroll=true) {
@@ -101,4 +102,6 @@ export function alertMessage(message, scroll=true) {
 export function removeAllAlerts() {
   const alerts = document.querySelectorAll(".alert");
   alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
+=======
+>>>>>>> ap--carousel
 }
