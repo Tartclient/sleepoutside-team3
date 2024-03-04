@@ -289,8 +289,8 @@ button {
   object-position: center;
 }
 
-.slide[data-active] {
-opacity: 1;
+.activeImage {
+  opacity: 1;
 }
 
 .carousel-btn {

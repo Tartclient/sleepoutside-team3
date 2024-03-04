@@ -49,11 +49,15 @@ const animateCart = async () => {
 function renderProductDetails() {
   let extraImageCarousel = document.querySelector(".extraImageCarousel");
   let extraImages = getExtraImages();
+
+  // Add all images to screen
   extraImages.forEach(image => {
     let listItem = document.createElement("li");
+    listItem.classList.add("slide");
     let imageElement = document.createElement("img");
     imageElement.src = image.Src;
     imageElement.alt = image.Alt;
+    imageElement.classList.add("extra-image");
     listItem.append(imageElement);
     extraImageCarousel.append(listItem);
   });
@@ -66,48 +70,67 @@ function renderProductDetails() {
   document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
   document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
+
+  // event listeners for click buttons
+  carouselCycle();
 }
 
 function getExtraImages() {
   let extraImages = product.Images.ExtraImages;
   if (extraImages.length > 0) {
-    let carouselCtn = document.querySelector(".carousel");
-    let prevBtn = document.createElement("button");
-    let nextBtn = document.createElement("button");
-    prevBtn.className = "carousel-btn prev";
-    nextBtn.className = "carousel-btn next";
-    prevBtn.textContent = "⬅️";
-    nextBtn.textContent = "➡️";
-    carouselCtn.prepend(nextBtn);
-    carouselCtn.prepend(prevBtn);
-
-
-    //carousel js
-    const prevAtt = prevBtn.createAttribute("data-carousel-button");
-    prevAtt.value = "prev";
-
-    const nextAtt = nextBtn.createAttribute("data-carousel-button");
-    nextAtt.value = "next";
-
-
-    const buttons = document.querySelector("[data-carousel-button]")
-    
-    buttons.forEach(button => {
-      button.addEventListener("click", () => {
-        const offset = button.dataset.carouselButton === "next" ? 1 : -1;
-        const slides = buttons.closest("[data-carousel]").querySelector("[data-slides]")
-
-        const activeSlide = slides.querySelector("[data-active]")
-        let newIndex = [...slides.children].indexOf(activeSlide) + offset
-        if (newIndex < 0) newIndex = slides.children.length - 1
-        if (newIndex >= slides.children.length) newIndex = 0
-
-        slides.children[newIndex].dataset.active = true
-        delete activeSlide.dataset.active
-      })
-    });
-
     return extraImages;
   }
 }
+
+function carouselCycle(){
+  // select carousel container
+  let carouselCtn = document.querySelector(".carousel");
+
+  //Create Buttons
+  let prevBtn = document.createElement("button");
+  let nextBtn = document.createElement("button");
+
+  //Add classes to buttons
+  prevBtn.classList.add("carousel-btn");
+  nextBtn.classList.add("carousel-btn");
+  prevBtn.classList.add("prev");
+  nextBtn.classList.add("next");
+
+  //set button text and add to DOM
+  prevBtn.textContent = "⬅️";
+  nextBtn.textContent = "➡️";
+  carouselCtn.prepend(nextBtn);
+  carouselCtn.prepend(prevBtn);
+
+  // selects buttons
+  const buttons = document.querySelectorAll(".carousel-btn");
+
+  let index = 0;
+  const images = document.querySelectorAll(".slide");
+  images[0].classList.add("activeImage");
+  // If button is clicked then either go forward or backward through image list
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      //remove the activeImage class from the current list item
+      images[index].classList.remove("activeImage")
+        // if button has class "prev" then subtract
+        if (button.classList.contains("prev")){
+          //prev button has been pressed
+          if (index == 0){
+            index = images.length - 1;
+          } else {
+            index--;
+          }
+        } else if (button.classList.contains("next")){
+          if (index == (images.length - 1)){
+            index = 0;
+          } else {
+            index++;
+          }
+        }
+        images[index].classList.add("activeImage");
+    })
+  });
+}
+
 
