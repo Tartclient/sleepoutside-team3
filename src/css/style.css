@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -120,11 +120,11 @@ button {
   border: 3px solid #441211;
   justify-content: space-between;
   padding: 0 1rem 0 1rem;
-  margin-top: .25rem;
+  margin-top: 0.25rem;
 }
 
 .alert p {
-  margin: .25rem;
+  margin: 0.25rem;
 }
 
 .alert span {
@@ -321,12 +321,13 @@ button {
   transform: translate(-50%);
   background-color: rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  border-radius: .25rem;
-  padding: 0 .5rem;
+  border-radius: 0.25rem;
+  padding: 0 0.5rem;
   color: rgba(255, 255, 255, 0.5);
 }
 
-.carousel-btn:hover,.carousel-btn:focus {
+.carousel-btn:hover,
+.carousel-btn:focus {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -335,11 +336,11 @@ button {
 }
 
 .carouse-btn.prev {
-  left:1rem;
+  left: 1rem;
 }
 
 .carousel-btn.next {
-  right:1rem;
+  right: 1rem;
 }
 
 /********** MODA L************/

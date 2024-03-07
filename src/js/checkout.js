@@ -5,7 +5,6 @@ import checkoutProcess from "./checkoutProcess.mjs";
 loadHeaderFooter();
 updateCartCounter();
 
-
 checkoutProcess.init("so-cart", ".checkout-summary");
 
 document
