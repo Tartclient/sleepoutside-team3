@@ -288,6 +288,10 @@ button {
   position: relative;
 }
 
+.activeImage img {
+  max-width: 50%;
+}
+
 .carousel > ul {
   margin: 0;
   padding: 0;
